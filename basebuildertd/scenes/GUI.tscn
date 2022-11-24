@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/GUI.gd" type="Script" id=1]
 [ext_resource path="res://art/coal.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://art/energy.png" type="Texture" id=12]
 [ext_resource path="res://ShowButtonNormal.tres" type="StyleBox" id=13]
 [ext_resource path="res://ShowButton.tres" type="StyleBox" id=14]
+[ext_resource path="res://art/pipe_all_dir.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.294118, 0.423529, 0.435294, 0.733333 )
@@ -551,6 +552,13 @@ anims/HideResources = SubResource( 7 )
 anims/RESET = SubResource( 5 )
 anims/ShowResources = SubResource( 6 )
 
+[node name="Pipes" type="Button" parent="."]
+margin_left = 920.0
+margin_top = 33.0
+margin_right = 996.0
+margin_bottom = 103.0
+icon = ExtResource( 15 )
+
 [connection signal="pressed" from="Mines/CoalMine" to="." method="_on_CoalMine_pressed"]
 [connection signal="pressed" from="Mines/UraniumMine" to="." method="_on_UraniumMine_pressed"]
 [connection signal="pressed" from="Mines/SolarMine" to="." method="_on_SolarMine_pressed"]
@@ -562,3 +570,4 @@ anims/ShowResources = SubResource( 6 )
 [connection signal="pressed" from="ShowResources" to="." method="_on_ShowResources_pressed"]
 [connection signal="pressed" from="ShowMines" to="." method="_on_ShowMines_pressed"]
 [connection signal="pressed" from="ShowGenerators" to="." method="_on_ShowGenerators_pressed"]
+[connection signal="pressed" from="Pipes" to="." method="_on_Pipes_pressed"]

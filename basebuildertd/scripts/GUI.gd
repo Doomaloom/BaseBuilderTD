@@ -7,6 +7,8 @@ signal uraniumMine
 signal solarMine
 signal oilMine
 
+signal pipe
+
 
 
 func _process(delta):
@@ -48,3 +50,7 @@ func _on_ShowMines_pressed():
 func _on_ShowGenerators_pressed():
 	$Generators.show()
 	$Mines.hide()
+
+
+func _on_Pipes_pressed():
+	emit_signal("pipe")

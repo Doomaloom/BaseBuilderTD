@@ -1,5 +1,8 @@
 extends Node
 
+var coal_mine = preload("res://scenes/CoalMine.tscn")
+var pipe_ = preload("res://scenes/Pipe.tscn")
+
 var placed = false
 var map
 
@@ -36,18 +39,17 @@ var OIL_GENERATOR_COST = [5, 20, 20, 30, 20] #5 metal, 20 brick, 20 wood, 30 sca
 var URANIUM_GENERATOR_COST = [20, 100, 50, 60, 100] #20 metal, 100 brick, 50 wood, 60 scaps, 100 energy
 var SUN_GENERATOR_COST = [0, 20, 50, 25, 50] #2 metal, 20 brick, 10 wood, 25 scaps, 50 energy
 
-var poop
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	poop = preload("res://scenes/CoalMine.tscn")
-
+	pass
+	
 
 func craft_coalMine():
-	var p1 = poop.instance()
-	add_child(p1)
-	p1.connect("check_biome", self, "check_biome")
-	p1.connect("update_Coal", self, "update_Coal")
-	connect("biome_check", p1, "biome_check")
+	var coalMine = coal_mine.instance()
+	add_child(coalMine)
+	coalMine.connect("check_biome", self, "check_biome")
+	coalMine.connect("update_Coal", self, "update_Coal")
+	connect("biome_check", coalMine, "biome_check")
 
 func update_Coal(coal):
 	if totalCoal < maxCoal:
@@ -65,3 +67,8 @@ func check_biome(object, target, x, y):
 		emit_signal("biome_check", object, true)
 	else: 
 		emit_signal("biome_check", object, false)
+
+
+func _on_GUI_pipe():
+	var pipe = pipe_.instance()
+	add_child(pipe)
